@@ -1,10 +1,12 @@
 package com.els.clubService.api;
 
-class ClubDTO {
+import java.util.UUID;
+
+public class ClubDTO {
 
     private String name;
     private String description;
-    private UserDTO userDTO;
+    private UUID owner;
 
 
     public String getName() {
@@ -15,7 +17,7 @@ class ClubDTO {
         return description;
     }
 
-    public UserDTO getOwner() {
-        return userDTO;
+    public UUID getOwner() {
+        return owner;
     }
 }

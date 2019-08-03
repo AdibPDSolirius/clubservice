@@ -1,6 +1,7 @@
 package com.els.clubService.model;
 
 import java.util.List;
+import java.util.UUID;
 
 public class BookClub {
 
@@ -10,17 +11,17 @@ public class BookClub {
 
     String description;
 
-    List<Book> previouslyReadBooks;
+    List<UUID> previouslyReadBooks;
 
-    Book currentBook;
+    UUID currentBook;
 
-    User owner;
+    UUID owner;
 
-    List<Meeting> previousMeetings;
+    List<UUID> previousMeetings;
 
-    Meeting nextMeeting;
+    UUID nextMeeting;
 
-    List<User> members;
+    List<UUID> members;
 
     public String getDescription() {
         return description;
@@ -30,51 +31,51 @@ public class BookClub {
         this.description = description;
     }
 
-    public List<Book> getPreviouslyReadBooks() {
+    public List<UUID> getPreviouslyReadBooks() {
         return previouslyReadBooks;
     }
 
-    public void setPreviouslyReadBooks(final List<Book> previouslyReadBooks) {
+    public void setPreviouslyReadBooks(final List<UUID> previouslyReadBooks) {
         this.previouslyReadBooks = previouslyReadBooks;
     }
 
-    public Book getCurrentBook() {
+    public UUID getCurrentBook() {
         return currentBook;
     }
 
-    public void setCurrentBook(final Book currentBook) {
+    public void setCurrentBook(final UUID currentBook) {
         this.currentBook = currentBook;
     }
 
-    public List<Meeting> getPreviousMeetings() {
+    public List<UUID> getPreviousMeetings() {
         return previousMeetings;
     }
 
-    public void setPreviousMeetings(final List<Meeting> previousMeetings) {
+    public void setPreviousMeetings(final List<UUID> previousMeetings) {
         this.previousMeetings = previousMeetings;
     }
 
-    public Meeting getNextMeeting() {
+    public UUID getNextMeeting() {
         return nextMeeting;
     }
 
-    public void setNextMeeting(final Meeting nextMeeting) {
+    public void setNextMeeting(final UUID nextMeeting) {
         this.nextMeeting = nextMeeting;
     }
 
-    public List<User> getMembers() {
+    public List<UUID> getMembers() {
         return members;
     }
 
-    public void setMembers(final List<User> members) {
+    public void setMembers(final List<UUID> members) {
         this.members = members;
     }
 
-    public User getOwner() {
+    public UUID getOwner() {
         return owner;
     }
 
-    public void setOwner(final User owner) {
+    public void setOwner(final UUID owner) {
         this.owner = owner;
     }
 
