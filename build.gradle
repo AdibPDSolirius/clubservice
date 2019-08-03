@@ -5,6 +5,9 @@ plugins {
 group 'els'
 version '1.0-SNAPSHOT'
 
+apply plugin:'application'
+mainClassName = "com.els.clubService.Application"
+
 sourceCompatibility = 1.8
 
 repositories {
