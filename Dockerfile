@@ -7,6 +7,7 @@ WORKDIR clubservice
  
 ENV PATH="/opt/gradle/bin:${PATH}" 
 ENV GRADLE_HOME="/opt/gradle/bin"
+ENV PORT='9999'
 
-EXPOSE 9999 9999
+EXPOSE ${PORT}
 CMD ["gradle", "run"]
