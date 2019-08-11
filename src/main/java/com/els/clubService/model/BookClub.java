@@ -3,24 +3,45 @@ package com.els.clubService.model;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "book_club")
 public class BookClub {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     String id;
 
+    @Column(name = "name")
     String name;
 
+    @Column(name = "description")
     String description;
 
+    @Column(name = "previously_read_books")
     List<UUID> previouslyReadBooks;
 
+    @Column(name = "current_book")
     UUID currentBook;
 
+    @Column(name = "owner")
     UUID owner;
 
+    @Column(name = "previous_meetings")
     List<UUID> previousMeetings;
 
+    @Column(name = "next_meeting")
     UUID nextMeeting;
 
+    @Column(name = "members")
     List<UUID> members;
 
     public String getDescription() {
