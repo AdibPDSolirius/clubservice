@@ -4,9 +4,9 @@ services:
     build: .
     ports:
       - "9999:9999"
-  
-  db:
-    build: postgres:latest
+      
+  database-service:
+    image: postgres:latest
     ports:
       - "5432:5432"
     environment:
