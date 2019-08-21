@@ -5,6 +5,7 @@ import static spark.Spark.port;
 import com.els.clubService.api.Router;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.els.clubService.HibernateUtil;
 
 public class Application {
 
@@ -14,6 +15,7 @@ public class Application {
         final Injector injector = Guice.createInjector();
         final Router router = injector.getInstance(Router.class);
         router.handleRequests();
+        HibernateUtil.getSessionFactory();
     }
 
     private static Integer getPort(){

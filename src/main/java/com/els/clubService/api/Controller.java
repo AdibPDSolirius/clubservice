@@ -18,8 +18,17 @@ class Controller {
     private ClubService clubService;
 
     String createClub(final Request request, final Response response) {
-        ClubDTO clubDTO = gson.fromJson(request.body(), ClubDTO.class);
+        CreateClubDTO clubDTO = gson.fromJson(request.body(), CreateClubDTO.class);
         ResponseCode responseCode = clubService.createClub(clubDTO);
+        setStatus(response, responseCode);
+        response.header("Content-Type", "application/json");
+        return gson.toJson(new ResponseDTO(responseCode.getResponse()));
+    }
+
+    String addUserToClub(final Request request, final Response response){
+        AddUserToClubDTO addUserToClubDTO = gson.fromJson(request.body(), AddUserToClubDTO.class);
+        // verify user
+        ResponseCode responseCode = clubService.addUserToClub(addUserToClubDTO);
         setStatus(response, responseCode);
         response.header("Content-Type", "application/json");
         return gson.toJson(new ResponseDTO(responseCode.getResponse()));

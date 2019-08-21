@@ -1,6 +1,6 @@
 package com.els.clubService.api;
 
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 import com.google.inject.Inject;
 
@@ -11,5 +11,6 @@ public class Router {
 
     public void handleRequests() {
         post("/club", controller::createClub);
+        put("/user", controller::addUserToClub);
     }
 }

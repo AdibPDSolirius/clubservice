@@ -1,24 +1,32 @@
 package com.els.clubService.model;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 
-@Entity
+import javax.persistence.ElementCollection;
+
+
+@Entity(name = "book_club")
 @Table(name = "book_club")
 public class BookClub {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+		name = "UUID",
+        strategy = "org.hibernate.id.UUIDGenerator"
+    )
     @Column(name = "id", updatable = false, nullable = false)
-    String id;
+    UUID id;
 
     @Column(name = "name")
     String name;
@@ -26,23 +34,26 @@ public class BookClub {
     @Column(name = "description")
     String description;
 
-    @Column(name = "previously_read_books")
-    List<UUID> previouslyReadBooks;
+    // @ElementCollection
+    // @Column(name = "previously_read_books")
+    // List<String> previouslyReadBooks;
 
     @Column(name = "current_book")
-    UUID currentBook;
+    String currentBook;
 
     @Column(name = "owner")
-    UUID owner;
+    String owner;
 
-    @Column(name = "previous_meetings")
-    List<UUID> previousMeetings;
+    // @ElementCollection
+    // @Column(name = "previous_meetings")
+    // List<String> previousMeetings;
 
     @Column(name = "next_meeting")
-    UUID nextMeeting;
+    String nextMeeting;
 
+    @ElementCollection
     @Column(name = "members")
-    List<UUID> members;
+    Set<UUID> members;
 
     public String getDescription() {
         return description;
@@ -52,51 +63,55 @@ public class BookClub {
         this.description = description;
     }
 
-    public List<UUID> getPreviouslyReadBooks() {
-        return previouslyReadBooks;
-    }
+    // public List<String> getPreviouslyReadBooks() {
+    //     return previouslyReadBooks;
+    // }
 
-    public void setPreviouslyReadBooks(final List<UUID> previouslyReadBooks) {
-        this.previouslyReadBooks = previouslyReadBooks;
-    }
+    // public void setPreviouslyReadBooks(final List<String> previouslyReadBooks) {
+    //     this.previouslyReadBooks = previouslyReadBooks;
+    // }
 
-    public UUID getCurrentBook() {
+    public String getCurrentBook() {
         return currentBook;
     }
 
-    public void setCurrentBook(final UUID currentBook) {
+    public void setCurrentBook(final String currentBook) {
         this.currentBook = currentBook;
     }
 
-    public List<UUID> getPreviousMeetings() {
-        return previousMeetings;
-    }
+    // public List<String> getPreviousMeetings() {
+    //     return previousMeetings;
+    // }
 
-    public void setPreviousMeetings(final List<UUID> previousMeetings) {
-        this.previousMeetings = previousMeetings;
-    }
+    // public void setPreviousMeetings(final List<String> previousMeetings) {
+    //     this.previousMeetings = previousMeetings;
+    // }
 
-    public UUID getNextMeeting() {
+    public String getNextMeeting() {
         return nextMeeting;
     }
 
-    public void setNextMeeting(final UUID nextMeeting) {
+    public void setNextMeeting(final String nextMeeting) {
         this.nextMeeting = nextMeeting;
     }
 
-    public List<UUID> getMembers() {
+    public Set<UUID> getMembers() {
         return members;
     }
 
-    public void setMembers(final List<UUID> members) {
+    public void setMembers(final Set<UUID> members) {
         this.members = members;
     }
 
-    public UUID getOwner() {
+    public void addMember(final UUID member){
+        this.members.add(member);
+    }
+
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(final UUID owner) {
+    public void setOwner(final String owner) {
         this.owner = owner;
     }
 
@@ -106,5 +121,13 @@ public class BookClub {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(final UUID id) {
+        this.id = id;
     }
 }
