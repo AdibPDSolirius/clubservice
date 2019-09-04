@@ -19,20 +19,16 @@ public class ClubService {
     }
 
     private BookClub convertToBookClub(CreateClubDTO clubDTO) {
-        System.out.println(clubDTO);
         BookClub bookClub = new BookClub();
         bookClub.setName(clubDTO.getName());
-        System.out.println("bookClub.setName(clubDTO.getName());");
         bookClub.setDescription(clubDTO.getDescription());
-        System.out.println("bookClub.setDescription(clubDTO.getDescription());");
         bookClub.setOwner(clubDTO.getOwner().toString());
-        System.out.println("bookClub.setOwner(clubDTO.getOwner().toString());");
 
         return bookClub;
     }
 
     public ResponseMessage addUserToClub(final AddUserToClubDTO addUserToClubDTO) {
-        bookClubRepository.addUserToClub(addUserToClubDTO.getUserId(), addUserToClubDTO.getClubId());
-        return ResponseMessage.SUCCESS;
+        boolean success = bookClubRepository.addUserToClub(addUserToClubDTO.getUserId(), addUserToClubDTO.getClubId());
+        return success ? ResponseMessage.SUCCESS : ResponseMessage.USER_COULD_NOT_BE_ADDED_TO_CLUB;
     }
 }

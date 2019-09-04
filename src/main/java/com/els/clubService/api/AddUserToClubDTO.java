@@ -3,14 +3,14 @@ package com.els.clubService.api;
 import java.util.UUID;
 
 public class AddUserToClubDTO {
-    private String userId;
-    private String clubId;
+    private UUID userId;
+    private UUID clubId;
 
     public UUID getUserId() {
-        return UUID.fromString(userId);
+        return userId;
     }
 
     public UUID getClubId() {
-        return UUID.fromString(clubId);
+        return clubId;
     }
 }

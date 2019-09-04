@@ -26,7 +26,7 @@ public class BookClubRepository {
         }
     }
 
-    public void addUserToClub(UUID userId, UUID bookClubId) {
+    public boolean addUserToClub(UUID userId, UUID bookClubId) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
@@ -35,11 +35,13 @@ public class BookClubRepository {
             bookClub.addMember(userId);
             session.save(bookClub);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
+            return false;
         }
     }
 }

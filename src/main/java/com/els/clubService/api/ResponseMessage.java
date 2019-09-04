@@ -2,9 +2,9 @@ package com.els.clubService.api;
 
 public enum ResponseMessage {
 
-    CLUB_NOT_FOUND("Club could not be found!"),
     CLUB_COULD_NOT_BE_CREATED("Club could not be created!"),
-    SUCCESS("Success!");
+    SUCCESS("Success!"),
+    USER_COULD_NOT_BE_ADDED_TO_CLUB("User could not be added to book club");
 
     private String response;
 
@@ -15,5 +15,4 @@ public enum ResponseMessage {
     public String getResponse() {
         return response;
     }
-
 }

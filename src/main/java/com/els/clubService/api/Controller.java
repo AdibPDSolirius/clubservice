@@ -12,7 +12,6 @@ import spark.Response;
 class Controller {
 
     private static final int SUCCESS_STATUS = HttpStatus.OK_200;
-    private static final int NOT_FOUND_STATUS = HttpStatus.NOT_FOUND_404;
     private static final int CONFLICT_STATUS = HttpStatus.CONFLICT_409;
 
     private Gson gson = new Gson();
@@ -45,8 +44,8 @@ class Controller {
                 response.status(SUCCESS_STATUS);
                 break;
             }
-            case CLUB_NOT_FOUND: {
-                response.status(NOT_FOUND_STATUS);
+            case USER_COULD_NOT_BE_ADDED_TO_CLUB: {
+                response.status(CONFLICT_STATUS);
                 break;
             }
             case CLUB_COULD_NOT_BE_CREATED: {
