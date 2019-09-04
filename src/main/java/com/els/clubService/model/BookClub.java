@@ -19,7 +19,6 @@ import javax.persistence.ElementCollection;
 public class BookClub {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
 		name = "UUID",
@@ -34,9 +33,9 @@ public class BookClub {
     @Column(name = "description")
     String description;
 
-    // @ElementCollection
-    // @Column(name = "previously_read_books")
-    // List<String> previouslyReadBooks;
+    @ElementCollection
+    @Column(name = "previously_read_books")
+    Set<UUID> previouslyReadBooks;
 
     @Column(name = "current_book")
     String currentBook;
@@ -44,9 +43,9 @@ public class BookClub {
     @Column(name = "owner")
     String owner;
 
-    // @ElementCollection
-    // @Column(name = "previous_meetings")
-    // List<String> previousMeetings;
+    @ElementCollection
+    @Column(name = "previous_meetings")
+    Set<UUID> previousMeetings;
 
     @Column(name = "next_meeting")
     String nextMeeting;
@@ -63,13 +62,13 @@ public class BookClub {
         this.description = description;
     }
 
-    // public List<String> getPreviouslyReadBooks() {
-    //     return previouslyReadBooks;
-    // }
+    public Set<UUID> getPreviouslyReadBooks() {
+        return previouslyReadBooks;
+    }
 
-    // public void setPreviouslyReadBooks(final List<String> previouslyReadBooks) {
-    //     this.previouslyReadBooks = previouslyReadBooks;
-    // }
+    public void setPreviouslyReadBooks(final Set<UUID> previouslyReadBooks) {
+        this.previouslyReadBooks = previouslyReadBooks;
+    }
 
     public String getCurrentBook() {
         return currentBook;
@@ -79,13 +78,13 @@ public class BookClub {
         this.currentBook = currentBook;
     }
 
-    // public List<String> getPreviousMeetings() {
-    //     return previousMeetings;
-    // }
+    public Set<UUID> getPreviousMeetings() {
+        return previousMeetings;
+    }
 
-    // public void setPreviousMeetings(final List<String> previousMeetings) {
-    //     this.previousMeetings = previousMeetings;
-    // }
+    public void setPreviousMeetings(final Set<UUID> previousMeetings) {
+        this.previousMeetings = previousMeetings;
+    }
 
     public String getNextMeeting() {
         return nextMeeting;

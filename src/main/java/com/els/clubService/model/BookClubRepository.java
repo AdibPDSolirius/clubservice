@@ -9,18 +9,20 @@ import org.hibernate.Transaction;
 
 public class BookClubRepository {
 
-    public void saveBookClub(BookClub bookClub) {
+    public boolean saveBookClub(BookClub bookClub) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             transaction = session.beginTransaction();
             session.save(bookClub);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
+            return false;
         }
     }
 
